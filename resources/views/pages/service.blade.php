@@ -34,85 +34,22 @@
             </p>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset('img/isp.png')}}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">Pembangungan Infrastructure OSP dan ISP</a>
-                        <p class="mb-4">Sarana Prima Solusi Indonesia (SPSI) menawarkan solusi jasa pembangunan infrastructure jaringan telekomunikasi baik OSP (Out Side Pant) maupun ISP (In Side Plant) 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset('img/softwere.jpeg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">Softwere Development</a>
-                        <p class="mb-4">Sarana Prima Solusi Indonesia menyediakan jasa pembuatan
-                            perangkat lunak yang spesifik dan fleksibel yang disesuaikan dengan kebutuhan bisnis anda. Baik itu aplikasi
-                            berbasis desktop, aplikasi berbasis web, aplikasi client-server dan juga aplikasi enterprise.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset('img/network.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">Network Development</a>
-                        <p class="mb-4">Sarana Prima Solusi Indonesia dapat membantu anda dan usaha anda jika menginginkan solusi untuk Local
-                            Area Network (LAN), Wide Area Network (WAN), dan atau jaringan internet. Kami siap memberikan solusi dan
-                            implementasi dengan dukungan SDM yang handal dan berpengalaman.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset('img/infrastruktur.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">Infrastructure Management System</a>
-                        <p class="mb-4">Sarana Prima Solusi Indonesia menawarkan solusi Infrastructure Management System untuk monitoring
 
-                            konstruksi infrastruktur berbasis web dan android 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+            @foreach ($service as $service_data)
+                
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="{{asset('img/M2M.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
+                        <img src="{{asset('storage/' . $service_data->images) }}" class="img-fluid rounded-top w-100" alt="Image">
                     </div>
                     <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">Solusi M2M</a>
-                        <p class="mb-4">PT Sarana Prima Solusi Indonesia (PT SPSI) menghadirkan inovasi terbaru berupa layanan Vehicle Telematics dengan fungsi lengkap 
-                        </p>
+                        <a href="#" class="h4 d-inline-block mb-4">{{$service_data->title}}</a>
+                        <p class="mb-4">{{$service_data->description}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset('img/e-goverment.png')}}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4">E-Goverment</a>
-                        <p class="mb-4">Sebuah struktur yang siap dibangun oleh Sarana Prima solusi Indonesia akan menjadi
-                            jawabannya sehingga diharapkan seluruh kebijakan pemerintah semakin terarah dengan baik.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </div>

@@ -42,18 +42,22 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Contact Info</h4>
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-envelope text-info me-3"></i>
-                        <p class="text-white mb-0">admin@ptspsi.co.id</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-phone-alt text-info me-3"></i>
-                        <p class="text-white mb-0">(022) 87355420</p>
-                    </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <i class="fab fa-firefox-browser text-info me-3"></i>
-                        <p class="text-white mb-0">admin@ptspsi.co.id</p>
-                    </div>
+
+                    @foreach ($contact as $contact_data)
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-envelope text-info me-3"></i>
+                            <p class="text-white mb-0">{{$contact_data->email}}</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-phone-alt text-info me-3"></i>
+                            <p class="text-white mb-0">{{$contact_data->telepon}}</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fab fa-firefox-browser text-info me-3"></i>
+                            <p class="text-white mb-0">{{$contact_data->email}}</p>
+                        </div>
+                    @endforeach
+
                     <div class="d-flex">
                         <a class="btn btn-info btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f text-white"></i></a>
                         <a class="btn btn-info btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-instagram text-white"></i></a>

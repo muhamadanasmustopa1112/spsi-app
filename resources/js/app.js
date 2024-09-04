@@ -1,3 +1,7 @@
 import './bootstrap';
-// core version + navigation, pagination modules:
-// import Swiper bundle with all modules installed
+
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
