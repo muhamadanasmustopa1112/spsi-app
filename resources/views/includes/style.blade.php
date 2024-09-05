@@ -37,52 +37,8 @@
       font-weight: bold;
       color: #fff;
       border-style: solid;
+      background-color: rgb(245, 245, 245);
       border-color: var(--bs-info);
     }
 
-    swiper-slide:nth-child(1n) {
-      background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(2n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(3n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(4n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(5n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(6n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(7n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(8n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(9n) {
-        background-color: rgb(245, 245, 245);
-    }
-
-    swiper-slide:nth-child(10n) {
-        background-color: rgb(245, 245, 245);
-    }
-    swiper-slide:nth-child(11n) {
-        background-color: rgb(245, 245, 245);
-    }
-    swiper-slide:nth-child(12n) {
-        background-color: rgb(245, 245, 245);
-    }
 </style>

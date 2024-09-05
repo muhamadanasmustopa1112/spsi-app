@@ -26,6 +26,8 @@
     <div class="container-fluid contact py-5">
         <div class="container py-5">
             <div class="row g-5">
+                @foreach ($contact as $data)
+                    
                 <div class="col-xl-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
                         <div class="bg-light rounded p-5 mb-5">
@@ -38,10 +40,7 @@
                                         </div>
                                         <div>
                                             <h4>Address</h4>
-                                            <p class="mb-0">Jl. Sekemala Paledang
-                                                Komplek Sahmi Village No. A-1 Rt/Rw.005/006
-                                                Kelurahan Pasangrahan - Kecamatan Ujung Berung
-                                                Kota Bandung - Jawa Barat - 40617</p>
+                                            <p class="mb-0">{{$data->address}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +51,7 @@
                                         </div>
                                         <div>
                                             <h4>Mail Us</h4>
-                                            <p class="mb-0">admin@ptspsi.co.id</p>
+                                            <p class="mb-0">{{$data->email}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +62,7 @@
                                         </div>
                                         <div>
                                             <h4>Telephone</h4>
-                                            <p class="mb-0">(022) 87355420</p>
+                                            <p class="mb-0">{{$data->telepon}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +72,8 @@
                                             <i class="fab fa-firefox-browser fa-2x"></i>
                                         </div>
                                         <div>
-                                            <h4>admin@ptspsi.co.id</h4>
-                                            <p class="mb-0">(022) 87355420</p>
+                                            <h4>{{$data->email}}</h4>
+                                            <p class="mb-0">{{$data->telepon}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,6 +130,7 @@
                         <iframe class="rounded h-100 w-100" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3960.84109434941!2d107.7102715!3d-6.9095963!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ddf344cef739%3A0x2b963cf76d4a1d12!2sPT%20SARANA%20PRIMA%20SOLUSI%20INDONESIA!5e0!3m2!1sid!2sid!4v1724394686112!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

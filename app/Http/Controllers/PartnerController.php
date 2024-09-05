@@ -1,24 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ServiceModel;
-use App\Http\Requests\ServiceRequest;
+use App\Models\PartnerModel;
+use App\Http\Requests\PartnerRequest;
 use Illuminate\Support\Facades\Storage; 
+
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-        $items = ServiceModel::all(); 
+        $items = PartnerModel::all(); 
 
-        return view('admin.service')->with([
+        return view('admin.partner')->with([
             'items' => $items
-        ]);   
+        ]); 
     }
 
     /**
@@ -27,17 +27,12 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        $items = ServiceModel::all(); 
-
-        return view('admin.service-store')->with([
-            'item' => $items
-        ]);   
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceRequest $request)
+    public function store(Request $request)
     {
         //
         $data = $request->all();
@@ -45,7 +40,7 @@ class ServiceController extends Controller
             'img', 'public'
         );
 
-        ServiceModel::create($data);
+        PartnerModel::create($data);
 
         return back()->with('success', 'Image uploaded successfully.');
     }
@@ -64,9 +59,9 @@ class ServiceController extends Controller
     public function edit($id)
     {
         //
-        $items = ServiceModel::findOrFail($id); 
+        $items = PartnerModel::findOrFail($id); 
 
-        return view('admin.editservice')->with([
+        return view('admin.editpartner')->with([
             'item' => $items
         ]); 
     }
@@ -74,10 +69,10 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ServiceRequest $request, $id)
+    public function update(PartnerRequest $request, string $id)
     {
         //
-        $service = ServiceModel::findOrFail($id);
+        $service = PartnerModel::findOrFail($id);
 
         $data = $request->all();
 
@@ -95,17 +90,16 @@ class ServiceController extends Controller
         // Update the banner with the new data
         $service->update($data);
 
-        return back()->with('success', 'Service updated successfully.');
+        return back()->with('success', 'Partner updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
-
-        $item = ServiceModel::findOrFail($id);
+        $item = PartnerModel::findOrFail($id);
     
         $item->delete();
 

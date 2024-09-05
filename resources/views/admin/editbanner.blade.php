@@ -36,6 +36,22 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                      <label>Status Aktif</label>
+                      <br>
+                      <br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input"  type="radio" name="active" id="inlineRadio1" value="Y" {{ old('active', $item->active) == 'Y' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="inlineRadio1">Ya</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="active" id="inlineRadio2" value="N" {{ old('active', $item->active) == 'N' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                      </div>
+                      @error('active')
+                      <div class="text-muted">{{$message}}</div>
+                      @enderror
+                    </div>
+                    <div class="mb-3">
                       <label for="formFile" class="form-label">Images</label>
                       <input class="form-control  @error('images') is-invalid @enderror" value="{{ old('images') ? old('images') : $item->images }}" name="images" type="file" id="formFile">
                       @if($item->images)

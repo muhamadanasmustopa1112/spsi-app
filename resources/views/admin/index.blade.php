@@ -8,30 +8,56 @@
       <!-- Recent Orders start -->
       <div class="row">
         <div class="col-sm-12">
+          @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+          @endif
           <div class="card table-card">
             <div class="card-header">
-              <h5>Banner</h5>
+              <h3>Banner</h3>
             </div>
             <div class="card-body p-0">
-              <div class="table-responsive">
+         
+              <div class="table-responsive p-3">
+                <a href="{{route('banner-store')}}" class="btn btn-primary rounded-3">
+                  Add Banner
+                </a>
+                @php
+                  $no = 0;
+                @endphp
                 <table class="table">
                   <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Title</th>
                     <th>Deskripsi</th>
+                    <th>Status Aktif</th>
                     <th>Images</th>
                     <th>Action</th>
                   </tr>
                   @forelse ($items as $item)
+                      @php
+                        $no ++;
+                      @endphp
                     <tr>
-                      <td>{{$item->id}}</td>
+                      <td>{{$no}}</td>
                       <td>{{$item->title}}</td>
                       <td>{{$item->description}}</td>
+                      @if ($item->active == 'Y')
+                      <td><span class="badge bg-success">Active</span></td>
+                      @else
+                      <td><span class="badge bg-danger">Non Active</span></td>
+                      @endif
                       <td><img src="{{asset('storage/' . $item->images) }}" alt="prod img" style="max-width: 100px; height:auto;"></td>
                       <td>
-                        <a href="{{route('edit-banner', $item->id)}}" class="btn btn-primary rounded-3">
+                        <a href="{{route('edit-banner', $item->id)}}" class="btn btn-primary rounded-3" style="margin-bottom: 5px">
                           Edit
                         </a>
+                        <form action="{{ route('banners-destroy', $item->id) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger rounded-3">Delete</button>
+                        </form>  
                       </td>
                     </tr>
                   @empty

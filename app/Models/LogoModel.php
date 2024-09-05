@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BannerModel extends Model
+class LogoModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'banner'; 
+    protected $table = 'logo'; 
 
-    protected $fillable = ['title', 'description', 'images', 'active'];
-
+    protected $fillable = ['name', 'images', 'active'];
+    
 }

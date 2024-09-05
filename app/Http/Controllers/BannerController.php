@@ -26,7 +26,11 @@ class BannerController extends Controller
      */
     public function create()
     {
+        $items = BannerModel::all(); 
 
+        return view('admin.banner-store')->with([
+            'item' => $items
+        ]); 
     }
 
     /**
@@ -98,5 +102,10 @@ class BannerController extends Controller
     public function destroy(string $id)
     {
         //
+        $item = BannerModel::findOrFail($id);
+    
+        $item->delete();
+
+        return back()->with('success', 'Deleted successfully.');
     }
 }

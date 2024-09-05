@@ -41,7 +41,7 @@
                 
 
                 if (currentScrollTop < 2) {
-                    $('.logo').show();
+                    $('.logo1').show();
                     $('.logo2').hide();
 
                     console.log(currentScrollTop)
@@ -49,10 +49,10 @@
                 } else if(currentScrollTop >= 48) {
                     // Scrolling up
                     $('.logo2').show();
-                    $('.logo').hide();
+                    $('.logo1').hide();
 
                 }
-
+//
                 currentScrollTop = lastScrollTop
 
             });

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ServiceModel;
-use App\Http\Requests\ServiceRequest;
+use App\Models\LogoModel;
+use App\Http\Requests\LogoRequest;
+use App\Http\Requests\DetailLogoRequest;
 use Illuminate\Support\Facades\Storage; 
+
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class LogoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,11 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        $items = ServiceModel::all(); 
+        $items = LogoModel::all(); 
 
-        return view('admin.service')->with([
+        return view('admin.logo')->with([
             'items' => $items
-        ]);   
+        ]); 
     }
 
     /**
@@ -27,17 +29,12 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        $items = ServiceModel::all(); 
-
-        return view('admin.service-store')->with([
-            'item' => $items
-        ]);   
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceRequest $request)
+    public function store(LogoRequest $request)
     {
         //
         $data = $request->all();
@@ -45,7 +42,7 @@ class ServiceController extends Controller
             'img', 'public'
         );
 
-        ServiceModel::create($data);
+        LogoModel::create($data);
 
         return back()->with('success', 'Image uploaded successfully.');
     }
@@ -64,9 +61,9 @@ class ServiceController extends Controller
     public function edit($id)
     {
         //
-        $items = ServiceModel::findOrFail($id); 
+        $items = LogoModel::findOrFail($id); 
 
-        return view('admin.editservice')->with([
+        return view('admin.editlogo')->with([
             'item' => $items
         ]); 
     }
@@ -74,10 +71,36 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ServiceRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-        $service = ServiceModel::findOrFail($id);
+        $item = LogoModel::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'active' => 'required|in:Y,N',
+        ]);
+    
+
+        $countActiveItems = LogoModel::where('active', 'Y')->count();
+
+        if ($countActiveItems <= 2) {
+ 
+            if ($countActiveItems < 2 || $request->input('active') !== 'Y') {
+                $item->active = $request->input('active');
+                $item->save();
+                return response()->json(['success' => true, 'message' => 'Status updated successfully.']);
+            }
+
+            return response()->json(['success' => false, 'message' => 'Cannot update status. More than one item is already active.']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Item status cannot be updated because it is already "N".']);
+        
+    }
+
+    public function updateLogo(DetailLogoRequest $request, $id)
+    {
+        $service = LogoModel::findOrFail($id);
 
         $data = $request->all();
 
@@ -95,20 +118,20 @@ class ServiceController extends Controller
         // Update the banner with the new data
         $service->update($data);
 
-        return back()->with('success', 'Service updated successfully.');
+        return back()->with('success', 'Logo updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
-
-        $item = ServiceModel::findOrFail($id);
+        $item = LogoModel::findOrFail($id);
     
         $item->delete();
 
         return back()->with('success', 'Deleted successfully.');
+
     }
 }

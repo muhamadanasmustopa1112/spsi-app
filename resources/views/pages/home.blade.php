@@ -10,9 +10,11 @@
 
             <!-- Carousel Start -->
             <div class="header-carousel owl-carousel">
+                
+            @foreach ($banner as $data)
                     
                 <div class="header-carousel-item">
-                    <img src="{{asset('storage/' . $banner_first->images) }}" class="img-fluid w-100" alt="Image">
+                    <img src="{{asset('storage/' . $data->images) }}" class="img-fluid w-100" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row gy-0 gx-5">
@@ -20,8 +22,8 @@
                                 <div class="col-xl-7 animated fadeInLeft">
                                     <div class="text-sm-center text-md-end">
                                         <h4 class="text-info text-uppercase fw-bold mb-4">Sarana Prima Solusi Indonesia</h4>
-                                        <h3 class="display-4 text-uppercase text-white mb-4">{{$banner_first->title}}</h3>
-                                        <p class="mb-5 fs-5">{{$banner_first->description}}
+                                        <h3 class="display-4 text-uppercase text-white mb-4">{{$data->title}}</h3>
+                                        <p class="mb-5 fs-5">{{$data->description}}
                                         </p>
                                         <div class="d-flex align-items-center justify-content-center justify-content-md-end">
                                             <h2 class="text-white me-2">Follow Us:</h2>
@@ -38,32 +40,8 @@
                         </div>
                     </div>
                 </div>
+            @endforeach
 
-                <div class="header-carousel-item">
-                    <img src="{{asset('storage/' . $banner_last->images) }}" class="img-fluid w-100" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row g-5">
-                                <div class="col-12 animated fadeInUp">
-                                    <div class="text-center">
-                                        <h4 class="text-info text-uppercase fw-bold mb-4">Sarana Prima Solusi Indonesia</h4>
-                                        <h1 class="display-4 text-uppercase text-white mb-4">{{$banner_last->title}}</h1>
-                                        <p class="mb-5 fs-5">{{$banner_last->description}}</p>
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <h2 class="text-white me-2">Follow Us:</h2>
-                                            <div class="d-flex justify-content-end ms-2">
-                                                <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                   
-                                                <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                                                <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- Carousel End -->
         </div>
@@ -189,43 +167,13 @@
             <center>
  
             <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
-                <swiper-slide>
-                        <img src="{{asset('img/client1.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client2.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client3.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client4.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client5.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client6.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client7.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client8.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client9.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client10.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client11.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-                <swiper-slide>
-                        <img src="{{asset('img/client12.png')}}" class="img-fluid" alt="">
-                </swiper-slide>
-           
+
+                @foreach ($partner as $data)
+                    <swiper-slide>
+                            <img src="{{asset('storage/' . $data->images) }}" class="img-fluid" alt="">
+                    </swiper-slide>
+                @endforeach
+
             </swiper-container>
             
         </center>

@@ -1,7 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
     <a href="{{route('index')}}" class="navbar-brand p-0">
-        <img class="logo" src="{{asset('img/spsi-logo.png')}}" alt="Logo">
-        <img class="logo2" src="{{asset('img/spsi-logo2.png')}}" alt="Logo">
+        @php
+            $no = 0;
+        @endphp
+        @foreach ($logo as $data)
+            @php
+                $no++;
+                $logoid = 'logo' . $no;
+            @endphp
+        <img class="{{$logoid}}" src="{{asset('storage/' . $data->images) }}" alt="Logo">
+        @endforeach
+
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="fa fa-bars"></span>

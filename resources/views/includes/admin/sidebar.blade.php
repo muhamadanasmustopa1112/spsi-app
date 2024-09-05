@@ -47,6 +47,20 @@
             </a>
           </li>
           
+          <li class="pc-item {{ Route::is('logo') ? 'active' : '' }}">
+            <a href="{{route('logo')}}" class="pc-link">
+              <span class="pc-micon"><i class="ph ph-images"></i></span>
+              <span class="pc-mtext">Logo</span>
+            </a>
+          </li>
+
+          <li class="pc-item {{ Route::is('partner') ? 'active' : '' }}">
+            <a href="{{route('partner')}}" class="pc-link">
+              <span class="pc-micon"><i class="ph ph-images"></i></span>
+              <span class="pc-mtext">Partner</span>
+            </a>
+          </li>
+          
         </ul>
   
       </div>
