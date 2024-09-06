@@ -26,7 +26,7 @@ class EmailController extends Controller
         ];
 
         try {
-            Mail::to('muhamadanasmustopa@ptspsi.co.id')->send(new SendMessage($data)); 
+            Mail::to('admin@ptspsi.co.id')->send(new SendMessage($data)); 
 
             return redirect()->route('contact')->with('success', 'Email sent successfully!');
 
