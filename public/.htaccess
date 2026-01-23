@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # # Redirect index.php/contact/... to /contact/...
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php/contact/([^\s]+)\s
+    RewriteRule ^index\.php/contact/(.*)$ /contact/$1 [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -19,3 +23,17 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+
+
+
+# 🔒 Block PHP execution in public directory (except index.php)
+<FilesMatch "\.(php|php5|phtml|phar)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# ✅ Allow index.php (Laravel front controller)
+<Files "index.php">
+    Allow from all
+</Files>

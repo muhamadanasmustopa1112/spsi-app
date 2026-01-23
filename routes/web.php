@@ -11,7 +11,7 @@ use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('contacts', [HomeController::class, 'contact'])->name('contacts');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('service', [HomeController::class, 'service'])->name('service');
 Route::post('sendemail', [EmailController::class, 'sendEmail'])->name('sendemail');
@@ -63,5 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

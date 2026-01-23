@@ -1,3 +1,29 @@
-RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ /public/$1 [L,QSA]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+      # Redirect Joomla-style URL ke Laravel URL
+    RewriteCond %{REQUEST_URI} ^/index\.php/contact/([0-9]+)-[^/]+/([0-9]+)-[^/]+\.html$
+    RewriteRule ^index\.php/contact/([0-9]+)-[^/]+/([0-9]+)-[^/]+\.html$ /contact/%2 [R=301,L]
+
+    # ✅ Jika tidak akses /public/, arahkan ke public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L,QSA]
+</IfModule>
+
+# 🔐 Blok akses langsung ke .env dan file sensitif lainnya
+<FilesMatch "^\.env|\.git|composer\.(json|lock)|artisan|server\.php|readme\.md|phpunit\.xml$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 🔐 Blok semua dotfiles (.env, .gitignore, dsb)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 🔐 Blok semua file PHP di luar index.php
+<FilesMatch "\.(php|php5|phtml|phar)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
