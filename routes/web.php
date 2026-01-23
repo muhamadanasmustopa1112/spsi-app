@@ -8,6 +8,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\FieldEmployeeController;
+use App\Http\Controllers\EmployeeCardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -56,6 +58,17 @@ Route::post('partner-store', [PartnerController::class, 'store'])->middleware(['
 Route::get('/edit-partner/{id}', [PartnerController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-partner');
 Route::put('/partner-edit/{id}', [PartnerController::class, 'update'])->middleware(['auth', 'verified'])->name('partner-edit');
 Route::delete('/partner/{id}', [PartnerController::class, 'destroy'])->name('partner-destroy');
+
+
+Route::get('/field-employee',  [FieldEmployeeController::class, 'index'])->middleware(['auth', 'verified'])->name('field-employee');
+
+Route::post('/field-employee-store', [FieldEmployeeController::class, 'store'])->middleware(['auth', 'verified'])->name('field-employee-store');
+
+Route::delete('/field-employee/{id}', [FieldEmployeeController::class, 'destroy'])->name('field-employee-destroy');
+
+Route::get('/card/{slug}', [EmployeeCardController::class, 'show']);
+
+
 
 
 Route::middleware('auth')->group(function () {
