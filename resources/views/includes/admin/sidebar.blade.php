@@ -60,6 +60,13 @@
               <span class="pc-mtext">Partner</span>
             </a>
           </li>
+
+          <li class="pc-item {{ Route::is('field-employee') ? 'active' : '' }}">
+            <a href="{{route('field-employee')}}" class="pc-link">
+              <span class="pc-micon"><i class="ph ph-images"></i></span>
+              <span class="pc-mtext">Field Employee</span>
+            </a>
+          </li>
           
         </ul>
   
