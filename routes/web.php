@@ -67,9 +67,9 @@ Route::delete('/partner/{id}', [PartnerController::class, 'destroy'])->name('par
 
 
 Route::get('/field-employee',  [FieldEmployeeController::class, 'index'])->middleware(['auth', 'verified'])->name('field-employee');
-
 Route::post('/field-employee-store', [FieldEmployeeController::class, 'store'])->middleware(['auth', 'verified'])->name('field-employee-store');
-
+Route::get('/field-employee-edit/{id}', [FieldEmployeeController::class, 'edit'])->middleware(['auth', 'verified'])->name('field-employee-edit');
+Route::put('/field-employee-update/{id}', [FieldEmployeeController::class, 'update'])->middleware(['auth', 'verified'])->name('field-employee-update');
 Route::delete('/field-employee/{id}', [FieldEmployeeController::class, 'destroy'])->name('field-employee-destroy');
 
 Route::get('/card/{slug}', [EmployeeCardController::class, 'show']);

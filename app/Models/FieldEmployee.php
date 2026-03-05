@@ -11,6 +11,7 @@ class FieldEmployee extends Model
 
      protected $fillable = [
         'name',
+        'nik',
         'slug',
         'position',
         'phone',

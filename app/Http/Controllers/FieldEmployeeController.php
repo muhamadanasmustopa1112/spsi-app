@@ -30,6 +30,31 @@ class FieldEmployeeController extends Controller
         return back()->with('success', 'Karyawan berhasil ditambahkan');
     }
 
+    public function edit($id)
+    {
+        $item = FieldEmployee::findOrFail($id);
+        return view('admin.edit-field-employee', compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = FieldEmployee::findOrFail($id);
+        $data = $request->all();
+
+        if ($request->hasFile('photo')) {
+            if ($item->photo) {
+                Storage::disk('public')->delete($item->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('employee', 'public');
+        } else {
+            unset($data['photo']);
+        }
+
+        $item->update($data);
+
+        return redirect()->route('field-employee')->with('success', 'Data karyawan berhasil diupdate');
+    }
+
     public function destroy($id)
     {
         $item = FieldEmployee::findOrFail($id);
