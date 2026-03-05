@@ -22,7 +22,7 @@
             <a href="{{route('service')}}" class="nav-item nav-link {{ Route::is('service') ? 'active' : '' }}">Services</a>
             {{-- <a href="blog.html" class="nav-item nav-link">Blogs</a> --}}
            
-            <a href="{{route('contacts')}}" class="nav-item nav-link {{ Route::is('contact') ? 'active' : '' }}">Contact Us</a>
+            <a href="{{route('contact')}}" class="nav-item nav-link {{ Route::is('contact') ? 'active' : '' }}">Contact Us</a>
         </div>
     </div>
 </nav>

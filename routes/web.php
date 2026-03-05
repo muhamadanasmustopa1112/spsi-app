@@ -12,8 +12,14 @@ use App\Http\Controllers\FieldEmployeeController;
 use App\Http\Controllers\EmployeeCardController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/generate', function(){
+   \Illuminate\Support\Facades\Artisan::call('storage:link');
+   echo 'ok';
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('contacts', [HomeController::class, 'contact'])->name('contacts');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('service', [HomeController::class, 'service'])->name('service');
 Route::post('sendemail', [EmailController::class, 'sendEmail'])->name('sendemail');
@@ -76,7 +82,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
 
 require __DIR__.'/auth.php';

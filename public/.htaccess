@@ -1,39 +1,9 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
     RewriteEngine On
 
-    # # Redirect index.php/contact/... to /contact/...
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php/contact/([^\s]+)\s
-    RewriteRule ^index\.php/contact/(.*)$ /contact/$1 [R=301,L]
+    RewriteBase /
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [L]
 </IfModule>
-
-
-
-
-# 🔒 Block PHP execution in public directory (except index.php)
-<FilesMatch "\.(php|php5|phtml|phar)$">
-    Order deny,allow
-    Deny from all
-</FilesMatch>
-
-# ✅ Allow index.php (Laravel front controller)
-<Files "index.php">
-    Allow from all
-</Files>

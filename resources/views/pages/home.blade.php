@@ -71,7 +71,6 @@
                         terus menerus mengembangkan sumber daya
                         manusia, infrastruktur bersama dengan
                         perluasan fasilitas, dan jaringan yang lebih luas.
-                        Untuk menjawab kebutuhan proyek end-to-end, PT Sarana Prima Solusi Indonesia menyediakan peralatan geologi, laboratorium, alat berat, dan kelautan (marine) dengan dukungan lengkap—sourcing global, impor & dokumen, instalasi, kalibrasi, pelatihan, maintenance, hingga after-sales yang responsif.
                     </p>
                     <div class="row g-4">
                         <div class="col-md-6 col-lg-6 col-xl-6">
