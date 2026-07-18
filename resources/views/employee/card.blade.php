@@ -190,7 +190,7 @@
             </div>
         </div>
 
-        <div class="company">PT SARANA PRIMA SOLUSI INDONESIA</div>
+        <div class="company">{{ $employee->company ?? 'PT SARANA PRIMA SOLUSI INDONESIA' }}</div>
 
         <div class="divider"></div>
 

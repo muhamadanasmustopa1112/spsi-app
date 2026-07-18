@@ -38,6 +38,16 @@
               </div>
 
               <div class="mb-3">
+                <label class="form-label">Nama Perusahaan</label>
+                <input type="text" name="company"
+                  class="form-control @error('company') is-invalid @enderror"
+                  value="{{ old('company', $item->company) }}">
+                @error('company')
+                  <div style="color:red">{{ $message }}</div>
+                @enderror
+              </div>
+
+              <div class="mb-3">
                 <label class="form-label">Jabatan</label>
                 <input type="text" name="position"
                   class="form-control @error('position') is-invalid @enderror"

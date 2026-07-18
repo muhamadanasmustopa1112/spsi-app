@@ -10,9 +10,10 @@ class FieldEmployee extends Model
     use HasFactory;
 
      protected $fillable = [
-        'name',
+         'name',
         'nik',
         'slug',
+        'company',
         'position',
         'phone',
         'email',
